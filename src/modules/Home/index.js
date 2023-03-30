@@ -1,14 +1,16 @@
-import { Table } from "antd";
+import { Button, Table } from "antd";
 import React, { useEffect } from "react";
 import { useState } from "react";
 
 import { EditOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import CreateUserModal from "../../Components/Users/CreateUserModal";
 
 const Home = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(undefined);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -51,9 +53,18 @@ const Home = () => {
       ),
     },
   ];
+
+  const handleOpenModal = () => {
+    setShow(!show);
+  };
+
   return (
     <div>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button onClick={() => handleOpenModal()}>Create User</Button>
+      </div>
       <Table dataSource={users} columns={columns} loading={loading} />;
+      {!!show && <CreateUserModal handleOpenModal={handleOpenModal} />}
     </div>
   );
 };
