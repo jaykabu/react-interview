@@ -4,11 +4,11 @@ import "./index.css";
 import { quiz } from "./../../utils/quizQuestion";
 
 const Quiz = () => {
-  const [activeQuestion, setActiveQuestion] = React.useState(0);
-  const [selectedAnswer, setSelectedAnswer] = React.useState("");
-  const [showResult, setShowResult] = React.useState(false);
-  const [selectedAnswerIndex, setSelectedAnswerIndex] = React.useState(null);
-  const [result, setResult] = React.useState({
+  const [activeQuestion, setActiveQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [showResult, setShowResult] = useState(false);
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+  const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
     wrongAnswers: 0,
